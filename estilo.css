@@ -1,0 +1,227 @@
+CSS
+
+
+/* ==========================================================================
+   Configurações Globais & Variáveis
+   ========================================================================== */
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #1a1a1a;
+  --primary-color: #0d47a1;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --focus-amber: #d97706; /* Indicador de foco âmbar */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Modo Escuro / Alto Contraste */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f3f4f6;
+  --primary-color: #60a5fa;
+  --card-bg: #1e1e1e;
+  --border-color: #374151;
+  --focus-amber: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.125rem; /* Minimum 18px */
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   Acessibilidade & Foco (Teclado)
+   ========================================================================== */
+
+/* Indicador de foco de alto contraste (borda âmbar 3px) */
+*:focus-visible {
+  outline: 3px solid var(--focus-amber) !important;
+  outline-offset: 3px;
+}
+
+/* Botão "Pular para o conteúdo principal" */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Classe utilitária para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Cabeçalho & Navegação
+   ========================================================================== */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: var(--text-color);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Conteúdo Principal
+   ========================================================================== */
+main {
+  margin: 2.5rem 0;
+}
+
+.categoria {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Notícia em Destaque */
+.destaque {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+}
+
+.destaque h2 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.destaque p {
+  margin-bottom: 1.25rem;
+}
+
+.meta-info {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Mais Notícias */
+.mais-noticias h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--primary-color);
+  display: inline-block;
+}
+
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-noticia {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-noticia h4 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.card-noticia .autor {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Rodapé & Painel de Acessibilidade
+   ========================================================================== */
+footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 2px solid var(--border-color);
+}
+
+.acessibilidade-info {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.acessibilidade-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.acessibilidade-info ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+}
+
+.acessibilidade-info li {
+  margin-bottom: 0.5rem;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

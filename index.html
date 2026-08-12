@@ -1,152 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXO — Portal de Notícias</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXO - Portal de Notícias</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-  <!-- Header Vibrante com Efeito Gradient Header -->
+  <!-- Acessibilidade: Pular para o conteúdo principal -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
   <header class="site-header">
-    <div class="container header-container">
-      <div class="brand-wrapper">
-        <a href="#" class="logo">NEXO<span class="logo-dot">.</span></a>
-        <span class="site-date">Terça-feira, 5 de agosto de 2026</span>
+    <div class="container header-top">
+      <div class="brand">
+        <h1 class="logo">NEXO</h1>
+        <p class="subheading">Portal de Notícias</p>
       </div>
-      
-      <div class="header-actions">
-        <div class="search-box">
-          <input type="text" id="news-search" placeholder="Buscar notícias..." aria-label="Buscar notícias">
-          <span class="search-icon">🔍</span>
-        </div>
-        <button id="toggle-theme" class="btn-theme" aria-label="Alternar tema de contraste">
-          ⚡ Tema Neon
-        </button>
-      </div>
+      <time datetime="2026-08-05" class="current-date">Terça-feira, 5 de agosto de 2026</time>
     </div>
+
+    <nav class="main-nav" aria-label="Navegação Principal">
+      <div class="container">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="active">Início</a></li>
+          <li><a href="#politica">Política</a></li>
+          <li><a href="#economia">Economia</a></li>
+          <li><a href="#ciencia">Ciência</a></li>
+          <li><a href="#cultura">Cultura</a></li>
+          <li><a href="#internacional">Internacional</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <!-- Navegação Principal com Efeito Glassmorphism -->
-  <nav class="main-nav" aria-label="Navegação Principal">
-    <div class="container">
-      <ul class="nav-list">
-        <li><button class="nav-link active" data-category="all">⚡ Todos</button></li>
-        <li><button class="nav-link" data-category="politica">🏛️ Política</button></li>
-        <li><button class="nav-link" data-category="economia">📈 Economia</button></li>
-        <li><button class="nav-link" data-category="ciencia">🔬 Ciência</button></li>
-        <li><button class="nav-link" data-category="cultura">🎬 Cultura</button></li>
-        <li><button class="nav-link" data-category="internacional">🌐 Internacional</button></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Conteúdo Principal -->
   <main id="main-content" class="container grid-layout">
-    <!-- Notícia Destaque Principal -->
-    <section class="featured-news" aria-labelledby="featured-heading">
-      <div class="featured-header">
-        <span class="badge-fire">🔥 EM DESTAQUE</span>
-        <span class="read-estimate">⏱️ 6 min de leitura</span>
-      </div>
-
-      <article class="hero-card" data-category="politica">
-        <div class="hero-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Fachada iluminada do Congresso Nacional do Brasil à noite" class="hero-image">
-          <span class="category-tag tag-politica">Política</span>
-        </div>
-        
-        <div class="hero-content">
-          <h1 id="featured-heading">Reforma tributária entra em vigor com novas alíquotas para serviços e consumo</h1>
-          <p class="hero-lead">
-            A partir desta terça-feira, o novo sistema tributário brasileiro passa a valer para empresas de prestação de serviços. Especialistas alertam para o impacto sobre micro e pequenas empresas nos próximos 90 dias.
-          </p>
-          
-          <div class="meta-author">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Foto da jornalista Luísa Martins" class="author-avatar">
-            <div>
-              <span class="author-name">Luísa Martins</span>
-              <time datetime="2026-08-05T08:30" class="meta-time">08:30 — 5 ago. 2026</time>
-            </div>
-          </div>
+    <!-- Notícia Principal -->
+    <section class="headline-section" aria-labelledby="headline-title">
+      <article class="card primary-card">
+        <span class="category-tag">Política</span>
+        <h2 id="headline-title" class="headline-title">
+          Reforma tributária entra em vigor com novas alíquotas para serviços e consumo
+        </h2>
+        <p class="lead-text">
+          A partir desta terça-feira, o novo sistema tributário brasileiro passa a valer para empresas de prestação de serviços. Especialistas alertam para o impacto sobre micro e pequenas empresas nos próximos 90 dias.
+        </p>
+        <div class="article-meta">
+          <span class="author">Por Luísa Martins</span>
+          <span class="separator">•</span>
+          <time datetime="2026-08-05T08:30">08:30 — 5 ago. 2026</time>
+          <span class="separator">•</span>
+          <span class="read-time">6 min de leitura</span>
         </div>
       </article>
     </section>
 
-    <!-- Lateral: Mais Notícias com Imagens Thumbnails -->
-    <aside class="sidebar-news" aria-labelledby="sidebar-heading">
-      <h2 id="sidebar-heading" class="sidebar-title">⚡ Últimas Notícias</h2>
-      
-      <div class="news-list" id="news-container">
-        <!-- Card 1 -->
-        <article class="news-item" data-category="economia">
-          <div class="thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80" alt="Gráficos do mercado financeiro e notas de dinheiro" class="news-thumb">
-            <span class="category-tag tag-economia">Economia</span>
-          </div>
-          <div class="item-body">
-            <h3><a href="#">Banco Central mantém taxa Selic em 10,5% após reunião do Copom</a></h3>
-            <div class="meta-time">Por <strong>Fernanda Rios</strong> • 3h atrás</div>
-          </div>
+    <!-- Barra Lateral: Mais Notícias -->
+    <aside class="sidebar-section" aria-labelledby="sidebar-title">
+      <h2 id="sidebar-title" class="section-title">Mais Notícias</h2>
+      <div class="secondary-news">
+        
+        <article class="card mini-card">
+          <span class="category-tag">Economia</span>
+          <h3><a href="#noticia-1">Banco Central mantém taxa Selic em 10,5% após reunião do Copom</a></h3>
+          <p class="article-meta">Por Fernanda Rios <span class="separator">•</span> 3h atrás</p>
         </article>
 
-        <!-- Card 2 -->
-        <article class="news-item" data-category="ciencia">
-          <div class="thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=400&q=80" alt="Pesquisadora trabalhando em laboratório com microscópio" class="news-thumb">
-            <span class="category-tag tag-ciencia">Ciência</span>
-          </div>
-          <div class="item-body">
-            <h3><a href="#">Pesquisadores brasileiros desenvolvem vacina contra dengue tipo 3</a></h3>
-            <div class="meta-time">Por <strong>Marcelo Cunha</strong> • 5h atrás</div>
-          </div>
+        <article class="card mini-card">
+          <span class="category-tag">Ciência</span>
+          <h3><a href="#noticia-2">Pesquisadores brasileiros desenvolvem vacina contra dengue tipo 3</a></h3>
+          <p class="article-meta">Por Marcelo Cunha <span class="separator">•</span> 5h atrás</p>
         </article>
 
-        <!-- Card 3 -->
-        <article class="news-item" data-category="cultura">
-          <div class="thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" alt="Sala de cinema com projeção de luz" class="news-thumb">
-            <span class="category-tag tag-cultura">Cultura</span>
-          </div>
-          <div class="item-body">
-            <h3><a href="#">Festival de cinema de São Paulo anuncia programação com 220 filmes</a></h3>
-            <div class="meta-time">Por <strong>Aline Souza</strong> • 7h atrás</div>
-          </div>
+        <article class="card mini-card">
+          <span class="category-tag">Cultura</span>
+          <h3><a href="#noticia-3">Festival de cinema de São Paulo anuncia programação com 220 filmes</a></h3>
+          <p class="article-meta">Por Aline Souza <span class="separator">•</span> 7h atrás</p>
         </article>
 
-        <!-- Card 4 -->
-        <article class="news-item" data-category="internacional">
-          <div class="thumb-wrapper">
-            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=400&q=80" alt="Bandeiras de diversos países em cúpula internacional" class="news-thumb">
-            <span class="category-tag tag-internacional">Internacional</span>
-          </div>
-          <div class="item-body">
-            <h3><a href="#">Cúpula do G20 termina com acordo sobre tributação de fortunas globais</a></h3>
-            <div class="meta-time">Por <strong>Carlos Mendes</strong> • 9h atrás</div>
-          </div>
+        <article class="card mini-card">
+          <span class="category-tag">Internacional</span>
+          <h3><a href="#noticia-4">Cúpula do G20 termina com acordo sobre tributação de fortunas globais</a></h3>
+          <p class="article-meta">Por Carlos Mendes <span class="separator">•</span> 9h atrás</p>
         </article>
+
       </div>
     </aside>
   </main>
 
-  <!-- Rodapé Vibrante -->
   <footer class="site-footer">
     <div class="container footer-content">
-      <div class="footer-brand">
-        <span class="logo">NEXO<span class="logo-dot">.</span></span>
-        <p>© 2026 NEXO Jornalismo Digital. Todos os direitos reservados.</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#">Política de Privacidade</a></li>
-        <li><a href="#">Termos de Uso</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Acessibilidade</a></li>
-      </ul>
+      <p>NEXO &copy; 2026 — Todos os direitos reservados</p>
     </div>
   </footer>
 

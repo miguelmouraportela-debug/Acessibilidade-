@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Notícias Sofá</title>
+  <title>Portal de Notícias Sofá - Acessível</title>
   <link rel="stylesheet" href="estilo.css">
   <script src="main.js" defer></script>
 </head>
 <body>
 
   <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Barra de Ferramentas de Acessibilidade -->
+  <div class="barra-acessibilidade" role="region" aria-label="Ferramentas de acessibilidade visual e áudio">
+    <div class="container-acessibilidade">
+      <span class="label-acessibilidade">Acessibilidade:</span>
+      <button id="btn-aumentar-fonte" aria-label="Aumentar tamanho do texto">A+</button>
+      <button id="btn-restaurar-fonte" aria-label="Restaurar tamanho do texto">A</button>
+      <button id="btn-diminuir-fonte" aria-label="Diminuir tamanho do texto">A-</button>
+      <button id="btn-alto-contraste" aria-label="Alternar modo de alto contraste" aria-pressed="false">Alto Contraste</button>
+    </div>
+  </div>
 
   <header role="banner">
     <div class="header-top">
@@ -41,11 +52,14 @@
            class="destaque-imagem">
       <span class="categoria">Política</span>
       <h1>Governo anuncia novas medidas econômicas para o próximo trimestre</h1>
-      <p>
+      <p class="texto-noticia">
         As ações visam incentivar o setor produtivo e aumentar o investimento público em infraestrutura.
         Especialistas analisam os possíveis impactos a longo prazo no mercado financeiro.
       </p>
-      <a href="#" class="link-noticia">Ler notícia completa sobre as medidas econômicas</a>
+      <div class="acoes-noticia">
+        <button class="btn-ouvir" aria-label="Ouvir resumo da notícia principal">🔊 Ouvir Notícia</button>
+        <a href="#" class="link-noticia">Ler notícia completa sobre as medidas econômicas</a>
+      </div>
     </article>
 
     <section class="secao-secundarias" aria-labelledby="titulo-outras-noticias">
@@ -59,8 +73,11 @@
                class="card-imagem">
           <span class="categoria">Economia</span>
           <h3>Bolsa de valores fecha em alta de 2%</h3>
-          <p>Mercado reage positivamente aos novos dados de consumo divulgados nesta manhã.</p>
-          <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre alta na bolsa</span></a>
+          <p class="texto-noticia">Mercado reage positivamente aos novos dados de consumo divulgados nesta manhã.</p>
+          <div class="acoes-noticia">
+            <button class="btn-ouvir" aria-label="Ouvir resumo sobre alta na bolsa">🔊 Ouvir</button>
+            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre alta na bolsa</span></a>
+          </div>
         </article>
 
         <article class="card-secundario">
@@ -69,8 +86,11 @@
                class="card-imagem">
           <span class="categoria">Esportes</span>
           <h3>Final do campeonato será no domingo</h3>
-          <p>Equipes finalistas concluem preparação tática para o confronto decisivo.</p>
-          <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre a final do campeonato</span></a>
+          <p class="texto-noticia">Equipes finalistas concluem preparação tática para o confronto decisivo.</p>
+          <div class="acoes-noticia">
+            <button class="btn-ouvir" aria-label="Ouvir resumo sobre a final do campeonato">🔊 Ouvir</button>
+            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre a final do campeonato</span></a>
+          </div>
         </article>
 
         <article class="card-secundario">
@@ -79,8 +99,11 @@
                class="card-imagem">
           <span class="categoria">Ciência</span>
           <h3>Novo satélite ambiental é lançado com sucesso</h3>
-          <p>Equipamento ajudará no monitoramento de áreas desmatadas em tempo real.</p>
-          <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre o lançamento do satélite</span></a>
+          <p class="texto-noticia">Equipamento ajudará no monitoramento de áreas desmatadas em tempo real.</p>
+          <div class="acoes-noticia">
+            <button class="btn-ouvir" aria-label="Ouvir resumo sobre o lançamento do satélite">🔊 Ouvir</button>
+            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre o lançamento do satélite</span></a>
+          </div>
         </article>
 
       </div>

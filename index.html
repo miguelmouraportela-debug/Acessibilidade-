@@ -4,248 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal de Notícias Acessível</title>
-  <style>
-    /* ==========================================================================
-       1. CONFIGURAÇÕES GERAIS E TIPOGRAFIA (Mínimo 16px)
-       ========================================================================== */
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #1a1a1a;
-      --primary-color: #004680;
-      --focus-outline-color: #d60000; /* Alto contraste para o foco */
-      --card-bg: #f8f9fa;
-      --border-color: #cccccc;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif; /* Tipografia limpa */
-      font-size: 1rem; /* 16px padrão */
-      line-height: 1.5;
-      color: var(--text-color);
-      background-color: var(--bg-color);
-      padding: 1rem;
-    }
-
-    /* ==========================================================================
-       2. INDICADORES DE FOCO (OBRIGATÓRIO PARA NAVEGAÇÃO POR TECLADO)
-       ========================================================================== */
-    /* Remove o contorno padrão apenas para aplicar um visualmente mais espesso e visível */
-    *:focus-visible {
-      outline: 4px solid var(--focus-outline-color) !important;
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-
-    /* ==========================================================================
-       3. BOTÃO "PULAR PARA O CONTEÚDO PRINCIPAL" (SKIP LINK)
-       ========================================================================== */
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 1rem;
-      background: #000000;
-      color: #ffffff;
-      padding: 0.75rem 1.25rem;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 9999;
-      border: 2px solid #ffffff;
-    }
-
-    /* Revela o botão no topo da tela quando recebe o foco do teclado (Tab) */
-    .skip-link:focus {
-      top: 1rem;
-    }
-
-    /* ==========================================================================
-       4. CABEÇALHO E NAVEGAÇÃO
-       ========================================================================== */
-    header {
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .logo {
-      font-size: 1.75rem;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-
-    .search-form {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .search-form input {
-      font-size: 1rem;
-      padding: 0.5rem;
-      border: 2px solid var(--border-color);
-    }
-
-    .search-form button {
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding: 0.5rem;
-      display: inline-block;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* ==========================================================================
-       5. CARD DE NOTÍCIA PRINCIPAL (DESTAQUE)
-       ========================================================================== */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .destaque-principal {
-      background-color: var(--card-bg);
-      border: 2px solid var(--border-color);
-      padding: 1.5rem;
-      margin-bottom: 2.5rem;
-      border-radius: 4px;
-    }
-
-    .destaque-imagem {
-      width: 100%;
-      height: 300px;
-      background-color: #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      color: #555555;
-    }
-
-    .categoria {
-      display: inline-block;
-      text-transform: uppercase;
-      font-size: 0.875rem;
-      font-weight: bold;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-
-    .destaque-principal h1 {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-
-    .destaque-principal p {
-      font-size: 1.125rem; /* 18px */
-      margin-bottom: 1rem;
-    }
-
-    .link-noticia {
-      display: inline-block;
-      font-size: 1rem;
-      font-weight: bold;
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-
-    /* ==========================================================================
-       6. GRADE DE NOTÍCIAS SECUNDÁRIAS
-       ========================================================================== */
-    .secao-secundarias h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.25rem;
-    }
-
-    .grid-noticias {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card-secundario {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      border-radius: 4px;
-    }
-
-    .card-secundario img-placeholder {
-      width: 100%;
-      height: 150px;
-      background-color: #e0e0e0;
-      margin-bottom: 0.75rem;
-    }
-
-    .card-secundario h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-secundario p {
-      font-size: 1rem; /* 16px */
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
-
-    /* ==========================================================================
-       7. RODAPÉ
-       ========================================================================== */
-    footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 2px solid var(--border-color);
-      text-align: center;
-    }
-
-    footer ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
 
@@ -254,9 +14,9 @@
   <header role="banner">
     <div class="header-top">
       <div class="logo">[Nome do Portal]</div>
-     
+      
       <form class="search-form" role="search">
-        <label for="campo-busca" class="visually-hidden" style="position:absolute; left:-10000px;">Buscar notícias</label>
+        <label for="campo-busca" class="visually-hidden">Buscar notícias</label>
         <input type="search" id="campo-busca" placeholder="Buscar notícias...">
         <button type="submit">Pesquisar</button>
       </form>
@@ -274,7 +34,7 @@
   </header>
 
   <main id="conteudo-principal" tabindex="-1">
-   
+    
     <article class="destaque-principal">
       <div class="destaque-imagem" role="img" aria-label="Imagem descritiva da notícia principal">
         [Imagem de Destaque]
@@ -292,9 +52,9 @@
       <h2 id="titulo-outras-noticias">Outras Notícias</h2>
 
       <div class="grid-noticias">
-       
+        
         <article class="card-secundario">
-          <div class="card-secundario img-placeholder" role="img" aria-label="Imagem sobre a bolsa de valores"></div>
+          <div class="img-placeholder" role="img" aria-label="Imagem sobre a bolsa de valores"></div>
           <span class="categoria">Economia</span>
           <h3>Bolsa de valores fecha em alta de 2%</h3>
           <p>Mercado reage positivamente aos novos dados de consumo divulgados nesta manhã.</p>
@@ -302,7 +62,7 @@
         </article>
 
         <article class="card-secundario">
-          <div class="card-secundario img-placeholder" role="img" aria-label="Imagem de um estádio de futebol"></div>
+          <div class="img-placeholder" role="img" aria-label="Imagem de um estádio de futebol"></div>
           <span class="categoria">Esportes</span>
           <h3>Final do campeonato será no domingo</h3>
           <p>Equipes finalistas concluem preparação tática para o confronto decisivo.</p>
@@ -310,7 +70,7 @@
         </article>
 
         <article class="card-secundario">
-          <div class="card-secundario img-placeholder" role="img" aria-label="Imagem de um satélite no espaço"></div>
+          <div class="img-placeholder" role="img" aria-label="Imagem de um satélite no espaço"></div>
           <span class="categoria">Ciência</span>
           <h3>Novo satélite ambiental é lançado com sucesso</h3>
           <p>Equipamento ajudará no monitoramento de áreas desmatadas em tempo real.</p>

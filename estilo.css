@@ -1,352 +1,256 @@
-/* Custom Properties para Tema Escuro de Alto Contraste */
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E TIPOGRAFIA
+   ========================================================================== */
 :root {
-  --bg-color: #0e0e10;
-  --card-bg: #18181c;
-  --text-main: #f8f8f8;
-  --text-muted: #a0a0ab;
-  --accent-amber: #ffbf00;      /* Cor de destaque e foco WCAG AAA */
-  --focus-outline: #ffbf00;     /* Indicador visual de foco do teclado */
-  --border-color: #2a2a32;
-  --category-bg: #ffbf00;
-  --category-text: #0e0e10;
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --primary-color: #004680;
+  --focus-outline-color: #d60000; /* Alto contraste para o foco */
+  --card-bg: #f8f9fa;
+  --border-color: #cccccc;
 }
 
-/* Reset básico */
-*, *::before, *::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem; /* 16px padrão */
+  line-height: 1.5;
+  color: var(--text-color);
   background-color: var(--bg-color);
-  color: var(--text-main);
-  font-size: 18px; /* Tamanho mínimo do corpo de texto para alta legibilidade */
-  line-height: 1.6;
+  padding: 1rem;
 }
 
-/* ---------------------------------------------------------
-   Acessibilidade & Foco do Teclado (Requisito WCAG AAA)
---------------------------------------------------------- */
+/* Esconde elementos visualmente sem retirá-los dos leitores de tela */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
 
-/* Skip Link (Botão Oculto ativado no Tab) */
+/* ==========================================================================
+   2. INDICADORES DE FOCO (TECLADO)
+   ========================================================================== */
+*:focus-visible {
+  outline: 4px solid var(--focus-outline-color) !important;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   3. BOTÃO "PULAR PARA O CONTEÚDO PRINCIPAL" (SKIP LINK)
+   ========================================================================== */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 1rem;
-  background: var(--accent-amber);
-  color: #000000;
+  background: #000000;
+  color: #ffffff;
   padding: 0.75rem 1.25rem;
-  z-index: 1000;
+  font-weight: bold;
   text-decoration: none;
-  font-weight: 800;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: top 0.2s ease-in-out;
+  z-index: 9999;
+  border: 2px solid #ffffff;
+  transition: top 0.2s ease;
 }
 
 .skip-link:focus {
   top: 1rem;
-  outline: 4px solid #ffffff !important;
-  outline-offset: 2px;
 }
 
-/* Borda Espessa e de Alto Contraste ao receber Foco por Teclado */
-*:focus-visible,
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--focus-outline) !important;
-  outline-offset: 4px;
-  border-radius: 2px;
-}
-
-/* Remove a borda padrão para quem usa mouse, mantendo apenas para teclado */
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* Containers */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Header */
-.site-header {
-  background-color: #121215;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 2.5rem;
+/* ==========================================================================
+   4. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+header {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0;
-}
-
-.brand-group {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-
-.logo {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: var(--accent-amber);
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.subheading {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-}
-
-.current-date {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-/* Navegação Horizontal */
-.main-nav {
-  background-color: #16161a;
-  border-top: 1px solid var(--border-color);
-}
-
-.nav-list {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.nav-list a {
-  display: inline-block;
-  padding: 1rem 0;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.nav-list a:hover,
-.nav-list a.active {
-  color: var(--accent-amber);
-  border-bottom: 3px solid var(--accent-amber);
-}
-
-/* Rótulos das Seções */
-.section-label {
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent-amber);
   margin-bottom: 1rem;
 }
 
-/* Seção Notícia Destaque */
-.featured-section {
-  margin-bottom: 3.5rem;
+.logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
-.featured-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.featured-image {
-  width: 100%;
-  height: 100%;
-  min-height: 380px;
-  object-fit: cover;
-  display: block;
-}
-
-.featured-content {
-  padding: 2.5rem;
+.search-form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 0.5rem;
 }
 
-.category-badge {
-  display: inline-block;
-  align-self: flex-start;
-  background-color: var(--category-bg);
-  color: var(--category-text);
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.3rem 0.75rem;
-  border-radius: 3px;
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.5px;
+.search-form input {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 2px solid var(--border-color);
 }
 
-.headline-title {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 2.1rem;
-  line-height: 1.25;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
+.search-form button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
   color: #ffffff;
+  border: none;
+  cursor: pointer;
 }
 
-.headline-title a {
-  color: inherit;
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--primary-color);
   text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  display: inline-block;
 }
 
-.headline-title a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-.lead-text {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  line-height: 1.6;
+/* ==========================================================================
+   5. CARD DE NOTÍCIA PRINCIPAL
+   ========================================================================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.meta-info {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border-color);
-  padding-top: 1rem;
+main:focus {
+  outline: none;
+}
+
+.destaque-principal {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+}
+
+.destaque-imagem {
+  width: 100%;
+  height: 300px;
+  background-color: #e0e0e0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #555555;
 }
 
-.author-date {
-  font-weight: 600;
+.categoria {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
-/* Grade de Notícias Secundárias */
-.secondary-section {
-  margin-bottom: 4rem;
+.destaque-principal h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
 }
 
-.news-grid {
+.destaque-principal p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.link-noticia {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. GRADE DE NOTÍCIAS SECUNDÁRIAS
+   ========================================================================== */
+.secao-secundarias h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.25rem;
+}
+
+.grid-noticias {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.secondary-card {
+.card-secundario {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-}
-
-.card-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-}
-
-.card-body {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-top: 0.75rem;
-  margin-bottom: 1.25rem;
-  color: #ffffff;
-  flex-grow: 1;
-}
-
-.card-title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.card-title a:hover {
-  text-decoration: underline;
-}
-
-/* Rodapé */
-.site-footer {
-  background-color: #121215;
-  border-top: 1px solid var(--border-color);
-  padding: 2.5rem 0;
-  margin-top: 3rem;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.accessibility-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #1c1c22;
-  border: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
   border-radius: 4px;
-  font-size: 0.85rem;
-  color: var(--accent-amber);
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-  .featured-card {
-    grid-template-columns: 1fr;
-  }
-  
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.img-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #e0e0e0;
+  margin-bottom: 0.75rem;
 }
 
-@media (max-width: 600px) {
-  .header-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
+.card-secundario h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
 
-  .nav-list {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
+.card-secundario p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
 
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
+/* ==========================================================================
+   7. RODAPÉ
+   ========================================================================== */
+footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border-color);
+  text-align: center;
+}
 
-  .footer-content {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
+footer ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
 }

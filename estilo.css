@@ -1,227 +1,352 @@
-CSS
-
-
-/* ==========================================================================
-   Configurações Globais & Variáveis
-   ========================================================================== */
+/* Custom Properties para Tema Escuro de Alto Contraste */
 :root {
-  --bg-color: #f8f9fa;
-  --text-color: #1a1a1a;
-  --primary-color: #0d47a1;
-  --card-bg: #ffffff;
-  --border-color: #e0e0e0;
-  --focus-amber: #d97706; /* Indicador de foco âmbar */
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg-color: #0e0e10;
+  --card-bg: #18181c;
+  --text-main: #f8f8f8;
+  --text-muted: #a0a0ab;
+  --accent-amber: #ffbf00;      /* Cor de destaque e foco WCAG AAA */
+  --focus-outline: #ffbf00;     /* Indicador visual de foco do teclado */
+  --border-color: #2a2a32;
+  --category-bg: #ffbf00;
+  --category-text: #0e0e10;
 }
 
-/* Modo Escuro / Alto Contraste */
-body.dark-mode {
-  --bg-color: #121212;
-  --text-color: #f3f4f6;
-  --primary-color: #60a5fa;
-  --card-bg: #1e1e1e;
-  --border-color: #374151;
-  --focus-amber: #fbbf24;
-}
-
-* {
+/* Reset básico */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: 1.125rem; /* Minimum 18px */
-  line-height: 1.6;
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  color: var(--text-main);
+  font-size: 18px; /* Tamanho mínimo do corpo de texto para alta legibilidade */
+  line-height: 1.6;
 }
 
-/* ==========================================================================
-   Acessibilidade & Foco (Teclado)
-   ========================================================================== */
+/* ---------------------------------------------------------
+   Acessibilidade & Foco do Teclado (Requisito WCAG AAA)
+--------------------------------------------------------- */
 
-/* Indicador de foco de alto contraste (borda âmbar 3px) */
-*:focus-visible {
-  outline: 3px solid var(--focus-amber) !important;
-  outline-offset: 3px;
-}
-
-/* Botão "Pular para o conteúdo principal" */
+/* Skip Link (Botão Oculto ativado no Tab) */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 1rem;
-  background-color: var(--primary-color);
-  color: #ffffff;
+  background: var(--accent-amber);
+  color: #000000;
   padding: 0.75rem 1.25rem;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 0 0 8px 8px;
   z-index: 1000;
-  transition: top 0.2s ease;
+  text-decoration: none;
+  font-weight: 800;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: top 0.2s ease-in-out;
 }
 
 .skip-link:focus {
-  top: 0;
+  top: 1rem;
+  outline: 4px solid #ffffff !important;
+  outline-offset: 2px;
 }
 
-/* Classe utilitária para leitores de tela */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+/* Borda Espessa e de Alto Contraste ao receber Foco por Teclado */
+*:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--focus-outline) !important;
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
-/* ==========================================================================
-   Cabeçalho & Navegação
-   ========================================================================== */
-header {
+/* Remove a borda padrão para quem usa mouse, mantendo apenas para teclado */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+  background-color: #121215;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
+}
+
+.header-top {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem 0;
-  border-bottom: 2px solid var(--border-color);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
 }
 
-.logo h1 {
+.brand-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.logo {
+  font-family: 'Fraunces', Georgia, serif;
   font-size: 2.5rem;
-  letter-spacing: 2px;
-  color: var(--text-color);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+  line-height: 1;
 }
 
-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  list-style: none;
-}
-
-nav a {
-  color: var(--primary-color);
-  text-decoration: underline;
+.subheading {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   font-weight: 600;
 }
 
-/* ==========================================================================
-   Conteúdo Principal
-   ========================================================================== */
-main {
-  margin: 2.5rem 0;
+.current-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-.categoria {
+/* Navegação Horizontal */
+.main-nav {
+  background-color: #16161a;
+  border-top: 1px solid var(--border-color);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-list a {
   display: inline-block;
+  padding: 1rem 0;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--accent-amber);
+  border-bottom: 3px solid var(--accent-amber);
+}
+
+/* Rótulos das Seções */
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-/* Notícia em Destaque */
-.destaque {
-  background-color: var(--card-bg);
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 3rem;
-}
-
-.destaque h2 {
-  font-size: 2.25rem;
-  line-height: 1.25;
+  letter-spacing: 1.5px;
+  color: var(--accent-amber);
   margin-bottom: 1rem;
 }
 
-.destaque p {
+/* Seção Notícia Destaque */
+.featured-section {
+  margin-bottom: 3.5rem;
+}
+
+.featured-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.featured-image {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--category-bg);
+  color: var(--category-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
   margin-bottom: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.headline-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.1rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+}
+
+.headline-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.headline-title a:hover {
+  text-decoration: underline;
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 .meta-info {
-  font-size: 0.95rem;
-  opacity: 0.85;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Mais Notícias */
-.mais-noticias h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 3px solid var(--primary-color);
-  display: inline-block;
+.author-date {
+  font-weight: 600;
 }
 
-.grid-noticias {
+/* Grade de Notícias Secundárias */
+.secondary-section {
+  margin-bottom: 4rem;
+}
+
+.news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
-.card-noticia {
+.secondary-card {
   background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
   border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: #ffffff;
+  flex-grow: 1;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-decoration: underline;
+}
+
+/* Rodapé */
+.site-footer {
+  background-color: #121215;
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 0;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  display: flex;
   justify-content: space-between;
-}
-
-.card-noticia h4 {
-  font-size: 1.25rem;
-  line-height: 1.4;
-  margin: 0.5rem 0 1rem 0;
-}
-
-.card-noticia .autor {
-  font-size: 0.875rem;
-  opacity: 0.8;
-}
-
-/* ==========================================================================
-   Rodapé & Painel de Acessibilidade
-   ========================================================================== */
-footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
-  border-top: 2px solid var(--border-color);
-}
-
-.acessibilidade-info {
-  background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 2rem;
-}
-
-.acessibilidade-info h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.acessibilidade-info ul {
-  list-style-type: square;
-  padding-left: 1.5rem;
-}
-
-.acessibilidade-info li {
-  margin-bottom: 0.5rem;
-}
-
-.copyright {
-  text-align: center;
+  align-items: center;
+  color: var(--text-muted);
   font-size: 0.9rem;
-  opacity: 0.8;
+}
+
+.accessibility-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #1c1c22;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--accent-amber);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
 }

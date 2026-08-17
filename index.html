@@ -1,284 +1,135 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcards: Mitos e Verdades Musicais</title>
-  <style>
-    /* Configurações Gerais */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f3f5;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: #1a252f;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    header nav a {
-      color: #e74c3c;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    /* Grade de Cartões (Grid Responsivo) */
-    .grade-cartoes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      width: 100%;
-      max-width: 1200px;
-      padding: 1rem;
-    }
-
-    /* Estrutura do Flashcard (Efeito Flip) */
-    .container-cartao {
-      perspective: 1000px; /* Efeito de profundidade 3D */
-      height: 380px;
-    }
-
-    .cartao {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      border-radius: 12px;
-    }
-
-    /* Gira o cartão ao passar o mouse */
-    .container-cartao:hover .cartao {
-      transform: rotateY(180deg);
-    }
-
-    /* Configuração das duas faces do cartão */
-    .cartao-frente, .cartao-verso {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden; /* Esconde a face oposta */
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-    }
-
-    /* Configuração específica do Verso */
-    .cartao-verso {
-      transform: rotateY(180deg);
-      background-color: #f9fbfd;
-    }
-
-    /* Imagens dos Instrumentos */
-    .cartao-imagem {
-      width: 100%;
-      height: 55%;
-      object-fit: cover;
-    }
-
-    /* Textos dentro do Cartão */
-    .cartao p {
-      padding: 1rem;
-      text-align: center;
-      font-size: 1rem;
-      color: #34495e;
-      margin: auto 0;
-      line-height: 1.4;
-    }
-
-    .status-tag {
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-top: 12px;
-      text-align: center;
-      color: #d35400; /* Cor de dúvida */
-    }
-
-    /* Cores das respostas no verso */
-    .cartao-verso .status-tag.mito {
-      color: #e74c3c; /* Vermelho para Mito */
-    }
-
-    .cartao-verso .status-tag.verdade {
-      color: #2ecc71; /* Verde para Verdade */
-    }
-
-    footer {
-      background-color: #1a252f;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXO - Portal de Notícias</title>
+  <link rel="stylesheet" href="src/index.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
-  <header>
-    <h1>Confere Aí</h1>
-    <nav>
-      <a href="#">Início</a>
+  <header class="header">
+    <div class="header-container">
+      <div class="brand">
+        <h1 class="logo">NEXO</h1>
+        <span class="sub-logo">PORTAL DE NOTÍCIAS</span>
+      </div>
+      <div class="header-date">Terça-feira, 5 de agosto de 2026</div>
+    </div>
+    <nav class="nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#" class="active">Início</a></li>
+        <li><a href="#">Política</a></li>
+        <li><a href="#">Economia</a></li>
+        <li><a href="#">Ciência</a></li>
+        <li><a href="#">Cultura</a></li>
+        <li><a href="#">Internacional</a></li>
+      </ul>
     </nav>
   </header>
- 
-  <main>
-    <h2>Mitos e Verdades sobre Instrumentos Musicais</h2>
-   
-    <div class="grade-cartoes">
 
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=500" alt="Piano" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>O piano é classificado puramente como um instrumento de cordas.</p>
+  <main id="main-content">
+    <!-- Seção Destaque -->
+    <section class="destaque-section" aria-labelledby="destaque-label">
+      <span id="destaque-label" class="section-label">DESTAQUE</span>
+      <article class="destaque-card">
+        <div class="destaque-img-wrapper">
+          <span class="badge badge-politica">POLÍTICA</span>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Homem sorrindo">
+        </div>
+        <div class="destaque-content">
+          <h2>Reforma tributária entra em vigor com novas alíquotas para serviços e consumo</h2>
+          <p>A partir desta terça-feira, o novo sistema tributário brasileiro passa a valer para empresas de prestação de serviços. Especialistas alertam para o impacto sobre micro e pequenas empresas nos próximos 90 dias.</p>
+          <div class="meta-info">
+            <span>Por Luísa Martins</span>
+            <span>08:30 — 5 ago. 2026</span>
+            <span>6 min de leitura</span>
           </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=500" alt="Piano" class="cartao-imagem">
-            <span class="status-tag mito">Mito!</span>
-            <p>Ele é um instrumento de <strong>percussão de cordas</strong>, pois o som é produzido por martelos batendo nas cordas internas.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Seção Mais Notícias -->
+    <section class="grid-section" aria-labelledby="noticias-label">
+      <span id="noticias-label" class="section-label">MAIS NOTÍCIAS</span>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="card-img-wrapper">
+            <span class="badge badge-economia">ECONOMIA</span>
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=400&q=80" alt="Gráfico do mercado financeiro">
+          </div>
+          <h3>Banco Central mantém taxa Selic em 10,5% após reunião do Copom</h3>
+          <div class="meta-info">
+            <span>Por Fernanda Rios</span>
+            <span>3h atrás</span>
           </div>
         </article>
-      </section>
 
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1573871669415-06c295711b6d?w=500" alt="Flauta" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>A flauta transversal faz parte da família das madeiras na orquestra.</p>
+        <article class="news-card">
+          <div class="card-img-wrapper">
+            <span class="badge badge-ciencia">CIÊNCIA</span>
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=400&q=80" alt="Frascos de laboratório">
           </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1573871669415-06c295711b6d?w=500" alt="Flauta" class="cartao-imagem">
-            <span class="status-tag verdade">Verdade!</span>
-            <p>Embora hoje sejam feitas de metal, elas pertencem à família das madeiras por conta do seu método histórico e mecânica de produção de som.</p>
+          <h3>Pesquisadores brasileiros desenvolvem vacina contra dengue tipo 3</h3>
+          <div class="meta-info">
+            <span>Por Marcelo Cunha</span>
+            <span>5h atrás</span>
           </div>
         </article>
-      </section>
 
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1612225215416-61316d80d19d?w=500" alt="Violino" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>As cordas dos violinos modernos ainda são feitas exclusivamente de tripa de gato.</p>
+        <article class="news-card">
+          <div class="card-img-wrapper">
+            <span class="badge badge-cultura">CULTURA</span>
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=400&q=80" alt="Claquete de cinema">
           </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1612225215416-61316d80d19d?w=500" alt="Violino" class="cartao-imagem">
-            <span class="status-tag mito">Mito!</span>
-            <p>Historicamente usava-se tripa de ovelha (nunca de gato). Hoje em dia, a maioria usa materiais sintéticos ou metais como aço e alumínio.</p>
+          <h3>Festival de cinema de São Paulo anuncia programação com 220 filmes</h3>
+          <div class="meta-info">
+            <span>Por Aline Souza</span>
+            <span>7h atrás</span>
           </div>
         </article>
-      </section>
 
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1528143358801-41388554127b?w=500" alt="Saxofone" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>O saxofone é um instrumento da família dos metais por ser feito de latão.</p>
+        <article class="news-card">
+          <div class="card-img-wrapper">
+            <span class="badge badge-internacional">INTERNACIONAL</span>
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=400&q=80" alt="Plenário de conferência">
           </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1528143358801-41388554127b?w=500" alt="Saxofone" class="cartao-imagem">
-            <span class="status-tag mito">Mito!</span>
-            <p>Ele é da família das <strong>madeiras</strong> porque o som é gerado pela vibração de uma palheta de madeira (bambu) acoplada à boquilha.</p>
+          <h3>Cúpula do G20 termina com acordo sobre tributação de fortunas globais</h3>
+          <div class="meta-info">
+            <span>Por Carlos Mendes</span>
+            <span>9h atrás</span>
           </div>
         </article>
-      </section>
+      </div>
+    </section>
 
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=500" alt="Guitarra" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>A madeira do corpo de uma guitarra elétrica sólida influencia diretamente no timbre final do instrumento.</p>
-          </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=500" alt="Guitarra" class="cartao-imagem">
-            <span class="status-tag verdade">Verdade!</span>
-            <p>A densidade da madeira altera o sustain e a ressonância das cordas, influenciando o sinal captado pelos captadores magnéticos.</p>
-          </div>
-        </article>
-      </section>
-
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=500" alt="Bateria" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>Os pratos de bateria são feitos de misturas secretas de ligas metálicas que incluem até prata.</p>
-          </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=500" alt="Bateria" class="cartao-imagem">
-            <span class="status-tag verdade">Verdade!</span>
-            <p>Muitos pratos profissionais usam a liga de bronze B20, contendo cobre, estanho e, às vezes, traços de prata em fórmulas industriais secretas.</p>
-          </div>
-        </article>
-      </section>
-
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?w=500" alt="Teremim" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>Existe um instrumento musical que é tocado totalmente sem nenhum contato físico.</p>
-          </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1552422535-c45813c61732?w=500" alt="Teremim" class="cartao-imagem">
-            <span class="status-tag verdade">Verdade!</span>
-            <p>É o <strong>Teremim</strong>. Ele capta a posição das mãos do músico perto de duas antenas usando campos de radiofrequência para controlar o tom e o volume.</p>
-          </div>
-        </article>
-      </section>
-
-      <section class="container-cartao">
-        <article class="cartao">
-          <div class="cartao-frente">
-            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500" alt="Ukulele" class="cartao-imagem">
-            <span class="status-tag">Mito ou Verdade?</span>
-            <p>O Ukulele nasceu e foi totalmente inventado por nativos nas ilhas do Havaí.</p>
-          </div>
-          <div class="cartao-verso">
-            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500" alt="Ukulele" class="cartao-imagem">
-            <span class="status-tag mito">Mito!</span>
-            <p>Ele foi adaptado no Havaí, mas tem origem em um instrumento português chamado <strong>machete</strong> (ou braguinha), levado por imigrantes da Ilha da Madeira.</p>
-          </div>
-        </article>
-      </section>
-
-    </div>
+    <!-- Painel de Acessibilidade -->
+    <section class="acessibilidade-panel">
+      <h2>RECURSOS DE ACESSIBILIDADE</h2>
+      <ul>
+        <li>◆ Botão "Pular para conteúdo" ativo ao pressionar Tab</li>
+        <li>◆ Navegação completa por teclado</li>
+        <li>◆ Indicadores de foco de alto contraste (borda âmbar 3px)</li>
+        <li>◆ Ordem de leitura semântica para leitores de tela</li>
+        <li>◆ Texto mínimo 18px no corpo</li>
+        <li>◆ Ratio de contraste AA mínimo 4.5:1</li>
+      </ul>
+    </section>
   </main>
- 
-  <footer>
-    <p>Projeto feito por [Seu Nome]</p>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p><strong>NEXO</strong> © 2026 — Todos os direitos reservados</p>
+      <ul class="footer-links">
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Acessibilidade</a></li>
+      </ul>
+    </div>
   </footer>
 
+  <script src="src/main.js"></script>
 </body>
 </html>

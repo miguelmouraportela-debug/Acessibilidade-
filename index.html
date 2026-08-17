@@ -3,124 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Notícias- Acessível</title>
-  <link rel="stylesheet" href="estilo.css">
-  <script src="main.js" defer></script>
+  <title>Portal de Notícias Acessível</title>
+  <link rel="stylesheet" href="wireframe.css">
 </head>
 <body>
 
+  <!-- Link de atalho acessível via teclado -->
   <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
-  <!-- Barra de Ferramentas de Acessibilidade -->
-  <div class="barra-acessibilidade" role="region" aria-label="Ferramentas de acessibilidade visual e áudio">
-    <div class="container-acessibilidade">
-      <span class="label-acessibilidade">Acessibilidade:</span>
-      <button id="btn-aumentar-fonte" aria-label="Aumentar tamanho do texto">A+</button>
-      <button id="btn-restaurar-fonte" aria-label="Restaurar tamanho do texto">A</button>
-      <button id="btn-diminuir-fonte" aria-label="Diminuir tamanho do texto">A-</button>
-      <button id="btn-alto-contraste" aria-label="Alternar modo de alto contraste" aria-pressed="false">Alto Contraste</button>
-    </div>
-  </div>
-
-  <header role="banner">
-    <div class="header-top">
-      <div class="logo">Portal de notícias</div>
-      
-      <form class="search-form" role="search">
-        <label for="campo-busca" class="visually-hidden">Buscar notícias</label>
-        <input type="search" id="campo-busca" placeholder="Buscar notícias...">
-        <button type="submit">Pesquisar</button>
-      </form>
-    </div>
-
+  <!-- Cabeçalho Superior -->
+  <header class="header">
+    <div class="logo" tabindex="0">Wireframe Notícias</div>
+    
     <nav aria-label="Navegação Principal">
-      <ul>
+      <ul class="menu">
+        <li><a href="#">Início</a></li>
         <li><a href="#">Brasil</a></li>
         <li><a href="#">Mundo</a></li>
-        <li><a href="#">Política</a></li>
-        <li><a href="#">Economia</a></li>
-        <li><a href="#">Esportes</a></li>
+        <li><a href="#">Tecnologia</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Conteúdo Principal -->
   <main id="conteudo-principal" tabindex="-1">
-    
-    <article class="destaque-principal">
-      <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&auto=format&fit=crop" 
-           alt="Prédio do governo iluminado com bandeiras ao redor" 
-           class="destaque-imagem">
-      <span class="categoria">Política</span>
-      <h1>Governo anuncia novas medidas econômicas para o próximo trimestre</h1>
-      <p class="texto-noticia">
-        As ações visam incentivar o setor produtivo e aumentar o investimento público em infraestrutura.
-        Especialistas analisam os possíveis impactos a longo prazo no mercado financeiro.
-      </p>
-      <div class="acoes-noticia">
-        <button class="btn-ouvir" aria-label="Ouvir resumo da notícia principal">🔊 Ouvir Notícia</button>
-        <a href="#" class="link-noticia">Ler notícia completa sobre as medidas econômicas</a>
-      </div>
-    </article>
 
-    <section class="secao-secundarias" aria-labelledby="titulo-outras-noticias">
-      <h2 id="titulo-outras-noticias">Outras Notícias</h2>
+    <!-- Notícia Principal em Destaque -->
+    <section aria-label="Notícia em Destaque">
+      <article class="card-destaque">
+        <div class="imagem-placeholder" aria-hidden="true">[ Imagem Principal ]</div>
+        <div class="conteudo-card">
+          <h2>Título da Notícia de Maior Relevância do Dia</h2>
+          <p>Descrição sumária da notícia em destaque contendo o contexto principal da matéria para rápido entendimento.</p>
+          <a href="#" class="btn-link">Ler notícia completa</a>
+        </div>
+      </article>
+    </section>
 
-      <div class="grid-noticias">
-        
+    <!-- Grade de Notícias Secundárias -->
+    <section aria-label="Outras Notícias">
+      <h2>Notícias Secundárias</h2>
+      <div class="grid-secundarias">
+
         <article class="card-secundario">
-          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&auto=format&fit=crop" 
-               alt="Gráficos financeiros e cotações da bolsa de valores em tela" 
-               class="card-imagem">
-          <span class="categoria">Economia</span>
-          <h3>Bolsa de valores fecha em alta de 2%</h3>
-          <p class="texto-noticia">Mercado reage positivamente aos novos dados de consumo divulgados nesta manhã.</p>
-          <div class="acoes-noticia">
-            <button class="btn-ouvir" aria-label="Ouvir resumo sobre alta na bolsa">🔊 Ouvir</button>
-            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre alta na bolsa</span></a>
-          </div>
+          <div class="imagem-placeholder" aria-hidden="true">[ Imagem ]</div>
+          <h3>Título da Notícia Secundária 1</h3>
+          <p>Resumo curto da notícia secundária com informações rápidas.</p>
+          <a href="#" class="btn-link">Ler notícia</a>
         </article>
 
         <article class="card-secundario">
-          <img src="https://unsplash.com/pt-br/fotografias/jogo-de-futebol-em-um-estadio-lotado-a-noite-65yjpk2HSlA" 
-     alt="Estádio de futebol lotado de torcedores durante partida à noite" 
-     class="card-imagem">" 
-               alt="Estádio de futebol lotado de torcedores durante partida à noite" 
-               class="card-imagem">
-          <span class="categoria">Esportes</span>
-          <h3>Final do campeonato será no domingo</h3>
-          <p class="texto-noticia">Equipes finalistas concluem preparação tática para o confronto decisivo.</p>
-          <div class="acoes-noticia">
-            <button class="btn-ouvir" aria-label="Ouvir resumo sobre a final do campeonato">🔊 Ouvir</button>
-            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre a final do campeonato</span></a>
-          </div>
+          <div class="imagem-placeholder" aria-hidden="true">[ Imagem ]</div>
+          <h3>Título da Notícia Secundária 2</h3>
+          <p>Resumo curto da notícia secundária com informações rápidas.</p>
+          <a href="#" class="btn-link">Ler notícia</a>
         </article>
 
         <article class="card-secundario">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop" 
-               alt="Satélite em órbita ao redor do planeta Terra visto do espaço" 
-               class="card-imagem">
-          <span class="categoria">Ciência</span>
-          <h3>Novo satélite ambiental é lançado com sucesso</h3>
-          <p class="texto-noticia">Equipamento ajudará no monitoramento de áreas desmatadas em tempo real.</p>
-          <div class="acoes-noticia">
-            <button class="btn-ouvir" aria-label="Ouvir resumo sobre o lançamento do satélite">🔊 Ouvir</button>
-            <a href="#" class="link-noticia">Ler mais <span class="visually-hidden">sobre o lançamento do satélite</span></a>
-          </div>
+          <div class="imagem-placeholder" aria-hidden="true">[ Imagem ]</div>
+          <h3>Título da Notícia Secundária 3</h3>
+          <p>Resumo curto da notícia secundária com informações rápidas.</p>
+          <a href="#" class="btn-link">Ler notícia</a>
         </article>
 
       </div>
     </section>
+
   </main>
 
-  <footer role="contentinfo">
-    <nav aria-label="Links do Rodapé">
-      <ul>
-        <li><a href="#">Sobre Nós</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Declaração de Acessibilidade</a></li>
-        <li><a href="#">Termos de Uso</a></li>
-      </ul>
-    </nav>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2026 Portal de Notícias Acessível. Todos os direitos reservados.</p>
   </footer>
 
 </body>
